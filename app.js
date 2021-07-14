@@ -9,7 +9,7 @@ import Noticias from './models/Noticias.js';
 import Usuarios from './models/Usuarios.js';
 import LeerMasTarde from './models/LeerMasTarde.js';
 
-dotenv.config({path: '.env'});
+dotenv.config({path: 'variables.env'});
 
 db.sync({alter: true})
 	.then(() => console.log('base de datos conectada'))
