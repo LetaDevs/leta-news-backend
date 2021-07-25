@@ -9,7 +9,9 @@ const agregarNoticias = async (req, res, next) => {
 
 	try {
 		noticias.forEach((noticia) => {
-			Noticias.create(noticia);
+			if (Object.values(noticia).every((dato) => dato !== null)) {
+				Noticias.create(noticia);
+			}
 		});
 		res.status(200).json({code: 200, msg: 'creadas'});
 	} catch (error) {
