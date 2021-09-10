@@ -11,7 +11,7 @@ import LeerMasTarde from './models/LeerMasTarde.js';
 
 dotenv.config({path: 'variables.env'});
 
-db.sync({alter: true})
+db.sync()
 	.then(() => console.log('base de datos conectada'))
 	.catch((error) => console.log(error));
 

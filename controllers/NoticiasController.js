@@ -25,7 +25,9 @@ const eliminarNoticias = async (req, res) => {
 	if (noticias.length === 0) return res.status(200).json({code: 200, msg: 'no hay noticias'});
 
 	try {
-		await Noticias.destroy({where: {}, truncate: true});
+		await Noticias.destroy({
+			where: {publishedAt: {[Sequelize.Op.lt]: new Date(new Date() - 15 * 24 * 60 * 60 * 1000)}},
+		});
 		return res.status(200).json({code: 200, msg: 'noticias eliminadas'});
 	} catch (error) {
 		res.status(500).json({code: 500, msg: 'error interno'});
